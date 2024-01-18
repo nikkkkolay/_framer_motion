@@ -53,10 +53,18 @@ figure {
 }
 
 figure {
+    width: min(70vw, 600px);
     margin-bottom: 20px;
 }
 
+figure svg {
+    fill: white;
+    cursor: pointer;
+}
+
 ul li {
+    display: flex;
+    justify-content: center;
     list-style-type: none;
 }
 

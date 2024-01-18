@@ -1,11 +1,12 @@
 import { motion } from "framer-motion";
 import "./App.css";
 import logo from "./newsimg117208.webp";
+import Collapsible from "./components/Collapsible";
 
 const App = () => {
     const aliens = [
         { description: '"Чужой". Трутень, рост - 2,57 м.', image: "/src/images/1979.webp" },
-        { description: '"Чужие". Солдат, рост 2,18 м.', image: "/src/images/1986.webp" },
+        { description: '"Чужие". Солдат, рост - 2,18 м.', image: "/src/images/1986.webp" },
         { description: '"Чужие". Королева, рост - 4,33 м.', image: "/src/images/1986_2.webp" },
         { description: '"Чужой" 3. Бегун, рост - 1,95 м.', image: "/src/images/1992.webp" },
         { description: "«Чужой: Воскрешение». Новорождённый, рост - 2,41 м.", image: "/src/images/1997.webp" },
@@ -42,6 +43,7 @@ const App = () => {
                                 <motion.li variants={listVariants} initial="hidden" whileInView={"visible"} custom={i} key={alien.description}>
                                     <figure>
                                         <motion.img className="image" src={alien.image} alt={alien.description} whileTap={{ scale: 1.3, outline: "2px solid blue" }} />
+                                        <Collapsible />
                                         <figcaption>{alien.description}</figcaption>
                                     </figure>
                                 </motion.li>
