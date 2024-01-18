@@ -11,6 +11,10 @@ const Collapsible = (): JSX.Element => {
             style={{
                 margin: 0,
                 height: "50px",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
             }}
         >
             <AnimatePresence>
