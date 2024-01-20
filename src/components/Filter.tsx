@@ -23,10 +23,10 @@ const Filter: React.FC<{data: Props[]}> = ({data}): JSX.Element=> {
     };
 
     const listVariants = {
-        visible: (i: number) => ({
+        visible: () => ({
             opacity: 1,
             y: 0,
-            transition: { delay: i * 0.1 },
+            transition: { duration: 1 },
         }),
         hidden: { opacity: 0, y: 100 },
     };
@@ -42,15 +42,14 @@ const Filter: React.FC<{data: Props[]}> = ({data}): JSX.Element=> {
                     ></Button>
                 ))}
             <AnimatePresence>
-                <ul style={{marginTop: 10}}>
+                <ul style={{marginTop: 20}}>
                     {aliens &&
-                        aliens.map((alien, i) => {
+                        aliens.map((alien) => {
                             return (
                                 <motion.li
                                     variants={listVariants}
                                     initial="hidden"
                                     whileInView={"visible"}
-                                    custom={i}
                                     key={alien.description}
                                 >
                                     <figure>

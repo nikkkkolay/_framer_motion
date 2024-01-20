@@ -80,4 +80,9 @@ a {
 button {
     cursor: pointer;
     padding: 10px;
+    background: rgb(43, 42, 51);
+}
+
+button:hover {
+    background: red;
 }

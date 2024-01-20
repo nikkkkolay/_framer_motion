@@ -6,8 +6,9 @@ const Collapsible = (): JSX.Element => {
 
     const handleDeadler = () => setDead(!isDead);
 
+
     return (
-        <div
+        <motion.div
             style={{
                 margin: 0,
                 height: "50px",
@@ -16,10 +17,25 @@ const Collapsible = (): JSX.Element => {
                 justifyContent: "center",
                 alignItems: "center",
             }}
+            animate={{
+                rotate: [0, 10, -10, 0], 
+                transition: {
+                    duration: 1,
+                    repeat: Infinity, 
+                    ease: "easeInOut",
+                    delay: 2
+                },
+            }}
         >
             <AnimatePresence>
                 {isDead && (
-                    <svg onClick={handleDeadler} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="50px" height="50px">
+                    <svg
+                        onClick={handleDeadler}
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 50 50"
+                        width="50px"
+                        height="50px"
+                    >
                         <motion.path
                             initial={{ scale: 0 }}
                             animate={{ scale: 1 }}
@@ -43,7 +59,7 @@ const Collapsible = (): JSX.Element => {
                     you are dead
                 </motion.p>
             )}
-        </div>
+        </motion.div>
     );
 };
 

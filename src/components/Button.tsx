@@ -8,7 +8,7 @@ type Props = {
 const Button = ({text, handleFilter}: Props) => {
 
     return (
-        <motion.button onClick={()=> handleFilter(text)} whileHover={{ background: "red" }}>
+        <motion.button onClick={()=> handleFilter(text)}>
             {text}
         </motion.button>
     );
