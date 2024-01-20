@@ -26,7 +26,7 @@ const App = () => {
             <div className="container">
                 <motion.p initial={{ opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ delay: 0.5 }}>
                     Появилась возможность увидеть Рипли рядом с каждым из представителей инопланетной расы. В верхнем левом углу рост, вес и название ксеноморфа, а справа год
-                    выпуска фильма. Приятного просмотра, обязательно делитесь своим мнением в комментариях.
+                    выпуска фильма. Приятного просмотра.
                 </motion.p>
                 <Filter data={data}/>
                 <motion.p initial={{ opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ delay: 0.5 }}>
