@@ -40,7 +40,7 @@ const Collapsible = (): JSX.Element => {
                     animate={{ scale: 1, height: "auto" }}
                     transition={{ delay: 1, duration: 0.7 }}
                 >
-                    u are dead
+                    you are dead
                 </motion.p>
             )}
         </div>
