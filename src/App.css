@@ -44,6 +44,7 @@ body {
     display: inline-block;
     width: min(70vw, 600px);
     cursor: pointer;
+    user-select: none;
 }
 
 ul,
@@ -80,7 +81,7 @@ a {
 button {
     cursor: pointer;
     padding: 10px;
-    background: rgb(43, 42, 51);
+    position: relative;
 }
 
 button:hover {

@@ -3,15 +3,15 @@ import { motion, AnimatePresence } from "framer-motion";
 import Button from "./Button";
 import Collapsible from "./Collapsible";
 
-interface Props  {
+interface Props {
     description: string;
     image: string;
     year: number;
 }
 
-const Filter: React.FC<{data: Props[]}> = ({data}): JSX.Element=> {
-
-    const [aliens, setAliens] = useState(data.filter(el => el.year === 1979));
+const Filter: React.FC<{ data: Props[] }> = ({ data }): JSX.Element => {
+    const [aliens, setAliens] = useState(data.filter((el) => el.year === 1979));
+    const [active, setActive] = useState(1979);
 
     const buttons = data.reduce((acc: number[], el: Props) => {
         if (acc.includes(el.year)) return acc;
@@ -19,7 +19,8 @@ const Filter: React.FC<{data: Props[]}> = ({data}): JSX.Element=> {
     }, []);
 
     const handleFilter = (selector: number): void => {
-        setAliens(data.filter((el) => el.year === selector));		
+        setAliens(data.filter((el) => el.year === selector));
+        setActive(selector);
     };
 
     const listVariants = {
@@ -32,17 +33,19 @@ const Filter: React.FC<{data: Props[]}> = ({data}): JSX.Element=> {
     };
 
     return (
-        <div >
-            {buttons &&
-                buttons.map((button: number) => (
+        <motion.div layout style={{minHeight: '515px', maxHeight: '980px'}}>
+                {buttons.map((button: number) => (
                     <Button
                         key={button}
                         text={button}
                         handleFilter={handleFilter}
+                        isSelected={active === button}
+                        
                     ></Button>
                 ))}
+
             <AnimatePresence>
-                <ul style={{marginTop: 20}}>
+                <ul style={{ marginTop: 20 }}>
                     {aliens &&
                         aliens.map((alien) => {
                             return (
@@ -72,7 +75,7 @@ const Filter: React.FC<{data: Props[]}> = ({data}): JSX.Element=> {
                         })}
                 </ul>
             </AnimatePresence>
-        </div>
+        </motion.div>
     );
 };
 

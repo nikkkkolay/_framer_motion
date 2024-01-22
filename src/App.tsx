@@ -66,7 +66,7 @@ const App = () => {
                 whileHover={{ scale: 1.1 }}
                 animate={{ rotate: 360 }}
             />
-            <motion.a whileHover={{ scale: 1.2, color: "red" }}>ALIEN</motion.a>
+            <motion.a whileHover={{ scale: 1.2, color: "#ff0000" }}>ALIEN</motion.a>
 
             <div className="container">
                 <motion.p

@@ -6,7 +6,6 @@ const Collapsible = (): JSX.Element => {
 
     const handleDeadler = () => setDead(!isDead);
 
-
     return (
         <motion.div
             style={{
@@ -56,7 +55,7 @@ const Collapsible = (): JSX.Element => {
                     animate={{ scale: 1, height: "auto" }}
                     transition={{ delay: 1, duration: 0.7 }}
                 >
-                    you are dead
+                   ты умер
                 </motion.p>
             )}
         </motion.div>
