@@ -33,7 +33,7 @@ const Filter: React.FC<{ data: Props[] }> = ({ data }): JSX.Element => {
     };
 
     return (
-        <motion.div layout style={{minHeight: '380px', maxHeight: '980px'}}>
+        <motion.div layout style={{minHeight: '515px', maxHeight: '980px'}}>
                 {buttons.map((button: number) => (
                     <Button
                         key={button}
