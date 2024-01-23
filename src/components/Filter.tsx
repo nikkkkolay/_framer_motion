@@ -33,28 +33,19 @@ const Filter: React.FC<{ data: Props[] }> = ({ data }): JSX.Element => {
     };
 
     return (
-        <motion.div layout style={{minHeight: '515px', maxHeight: '980px'}}>
+        <>
+            <motion.div initial={{ opacity: 0 }} animate={{ x: 0, opacity: 1 }}>
                 {buttons.map((button: number) => (
-                    <Button
-                        key={button}
-                        text={button}
-                        handleFilter={handleFilter}
-                        isSelected={active === button}
-                        
-                    ></Button>
+                    <Button key={button} text={button} handleFilter={handleFilter} isSelected={active === button}></Button>
                 ))}
+            </motion.div>
 
             <AnimatePresence>
                 <ul style={{ marginTop: 20 }}>
                     {aliens &&
                         aliens.map((alien) => {
                             return (
-                                <motion.li
-                                    variants={listVariants}
-                                    initial="hidden"
-                                    whileInView={"visible"}
-                                    key={alien.description}
-                                >
+                                <motion.li variants={listVariants} initial="hidden" whileInView={"visible"} key={alien.description}>
                                     <figure>
                                         <motion.img
                                             className="image"
@@ -66,16 +57,14 @@ const Filter: React.FC<{ data: Props[] }> = ({ data }): JSX.Element => {
                                             }}
                                         />
                                         <Collapsible />
-                                        <figcaption>
-                                            {alien.description}
-                                        </figcaption>
+                                        <figcaption>{alien.description}</figcaption>
                                     </figure>
                                 </motion.li>
                             );
                         })}
                 </ul>
             </AnimatePresence>
-        </motion.div>
+        </>
     );
 };
 

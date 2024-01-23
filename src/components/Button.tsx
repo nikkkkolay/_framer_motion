@@ -9,8 +9,12 @@ type Props = {
 const Button = ({ text, handleFilter, isSelected, ...props }: Props) => {
     return (
         <motion.button
-            layout
             {...props}
+            style={{
+                position: "relative",
+                padding: "10px",
+                cursor: "pointer",
+            }}
             initial={{ background: "#2b2a33" }}
             animate={{ background: isSelected ? "#ff0000" : "#2b2a33" }}
             onClick={() => handleFilter(text)}

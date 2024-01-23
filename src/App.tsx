@@ -58,41 +58,21 @@ const data = [
 
 const App = () => {
     return (
-        <>
-            <motion.img
-                alt=""
-                src={logo}
-                className="logo"
-                whileHover={{ scale: 1.1 }}
-                animate={{ rotate: 360 }}
-            />
-            <motion.a whileHover={{ scale: 1.2, color: "#ff0000" }}>ALIEN</motion.a>
+        <div style={{ height: "100vh" }}>
+            <motion.img alt="" src={logo} className="logo" whileHover={{ scale: 1.1 }} animate={{ rotate: 360 }} />
 
             <div className="container">
-                <motion.p
-                    initial={{ opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    transition={{ delay: 0.5 }}
-                >
-                    Появилась возможность увидеть Рипли рядом с каждым из
-                    представителей инопланетной расы. В верхнем левом углу рост,
-                    вес и название ксеноморфа, а справа год выпуска фильма.
-                    Приятного просмотра.
+                <motion.p initial={{ opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ delay: 0.5 }}>
+                    Появилась возможность увидеть Рипли рядом с каждым из представителей инопланетной расы. В верхнем левом углу рост, вес и название ксеноморфа, а справа год
+                    выпуска фильма. Приятного просмотра.
                 </motion.p>
                 <Filter data={data} />
-                <motion.p
-                    initial={{ opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    transition={{ delay: 0.5 }}
-                >
-                    Вот такой интересный ликбез получился. Надеюсь было
-                    познавательно. Подписка и лайк приветствуются. Этот классный
-                    контент был обнаружен на ютуб-канале "FilmCore". Короткий
-                    ролик показывает всю эволюцию ксеноморфов в кино, начиная с
-                    1979 по 2019 годы.
+                <motion.p initial={{ opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ delay: 0.5 }}>
+                    Вот такой интересный ликбез получился. Надеюсь было познавательно. Подписка и лайк приветствуются. Этот классный контент был обнаружен на ютуб-канале
+                    "FilmCore". Короткий ролик показывает всю эволюцию ксеноморфов в кино, начиная с 1979 по 2019 годы.
                 </motion.p>
             </div>
-        </>
+        </div>
     );
 };
 

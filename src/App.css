@@ -33,7 +33,6 @@ body {
     width: min(50vw, 200px);
     height: min(50vw, 200px);
     background-color: #3f3d3d;
-    margin-bottom: 20px;
     overflow: hidden;
     border-radius: 50%;
     object-fit: cover;
@@ -71,19 +70,4 @@ ul li {
 
 .container {
     max-width: 1200px;
-}
-
-a {
-    display: inline-block;
-    cursor: pointer;
-}
-
-button {
-    cursor: pointer;
-    padding: 10px;
-    position: relative;
-}
-
-button:hover {
-    background: red;
 }
