@@ -34,7 +34,11 @@ const Filter: React.FC<{ data: Props[] }> = ({ data }): JSX.Element => {
 
     return (
         <>
-            <motion.div initial={{ opacity: 0 }} animate={{ x: 0, opacity: 1 }}>
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                style={{ display: "flex", gap: "10px", flexWrap: "wrap", flexDirection: "row", justifyContent: "center" }}
+            >
                 {buttons.map((button: number) => (
                     <Button key={button} text={button} handleFilter={handleFilter} isSelected={active === button}></Button>
                 ))}

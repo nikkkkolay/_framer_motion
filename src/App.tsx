@@ -58,7 +58,7 @@ const data = [
 
 const App = () => {
     return (
-        <div style={{ height: "100vh" }}>
+        <motion.div style={{ marginTop: "50px" }}>
             <motion.img alt="" src={logo} className="logo" whileHover={{ scale: 1.1 }} animate={{ rotate: 360 }} />
 
             <div className="container">
@@ -72,7 +72,7 @@ const App = () => {
                     "FilmCore". Короткий ролик показывает всю эволюцию ксеноморфов в кино, начиная с 1979 по 2019 годы.
                 </motion.p>
             </div>
-        </div>
+        </motion.div>
     );
 };
 
