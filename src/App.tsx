@@ -56,6 +56,21 @@ const data = [
     },
 ];
 
+const textAnimation = {
+    hidden: {
+        y: -10,
+        opacity: 0,
+    },
+    visible: (custom: number) => ({
+        y: 0,
+        opacity: 1,
+        transition: { delay: custom * 0.2 },
+    }),
+};
+
+const text = `Вот такой интересный ликбез получился. Надеюсь было познавательно. Подписка и лайк приветствуются. Этот классный контент был обнаружен на ютуб-канале
+"FilmCore". Короткий ролик показывает всю эволюцию ксеноморфов в кино, начиная с 1979 по 2019 годы.`;
+
 const App = () => {
     return (
         <motion.div style={{ marginTop: "50px" }}>
@@ -67,10 +82,14 @@ const App = () => {
                     выпуска фильма. Приятного просмотра.
                 </motion.p>
                 <Filter data={data} />
-                <motion.p initial={{ opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ delay: 0.5 }}>
-                    Вот такой интересный ликбез получился. Надеюсь было познавательно. Подписка и лайк приветствуются. Этот классный контент был обнаружен на ютуб-канале
-                    "FilmCore". Короткий ролик показывает всю эволюцию ксеноморфов в кино, начиная с 1979 по 2019 годы.
-                </motion.p>
+                <motion.section initial="hidden" animate="visible">
+                    {text &&
+                        text.split(" ").map((p, i) => (
+                            <motion.span key={p + i} custom={i} variants={textAnimation} transition={{ delay: 0.5 }}>
+                                {p + " "}
+                            </motion.span>
+                        ))}
+                </motion.section>
             </div>
         </motion.div>
     );

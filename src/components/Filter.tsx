@@ -11,7 +11,7 @@ interface Props {
 
 const Filter: React.FC<{ data: Props[] }> = ({ data }): JSX.Element => {
     const [aliens, setAliens] = useState(data.filter((el) => el.year === 1979));
-    const [active, setActive] = useState(1979);
+    const [active, setActive] = useState(aliens[0].year);
 
     const buttons = data.reduce((acc: number[], el: Props) => {
         if (acc.includes(el.year)) return acc;
@@ -36,16 +36,16 @@ const Filter: React.FC<{ data: Props[] }> = ({ data }): JSX.Element => {
         <>
             <motion.div
                 initial={{ opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                style={{ display: "flex", gap: "10px", flexWrap: "wrap", flexDirection: "row", justifyContent: "center" }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.5 }}
+                style={{ display: "flex", flexDirection: "row", justifyContent: "center", flexWrap: "wrap", gap: "10px" }}
             >
                 {buttons.map((button: number) => (
                     <Button key={button} text={button} handleFilter={handleFilter} isSelected={active === button}></Button>
                 ))}
             </motion.div>
-
             <AnimatePresence>
-                <ul style={{ marginTop: 20 }}>
+                <motion.ul style={{ marginTop: 20 }}>
                     {aliens &&
                         aliens.map((alien) => {
                             return (
@@ -66,7 +66,7 @@ const Filter: React.FC<{ data: Props[] }> = ({ data }): JSX.Element => {
                                 </motion.li>
                             );
                         })}
-                </ul>
+                </motion.ul>
             </AnimatePresence>
         </>
     );
