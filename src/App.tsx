@@ -1,9 +1,11 @@
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { AnimatePresence, motion, Reorder } from "framer-motion";
 
 import Filter from "./components/Filter";
 import MText from "./components/MText";
 import logo from "./newsimg117208.webp";
 import "./App.css";
+import Icon from "./components/Icon";
 
 const data = [
     {
@@ -64,15 +66,43 @@ const headerText = `Появилась возможность увидеть Р�
 const footerText = `Вот такой интересный ликбез получился. Надеюсь было познавательно. Подписка и лайк приветствуются. Этот классный контент был обнаружен на ютуб-канале
 "FilmCore". Короткий ролик показывает всю эволюцию ксеноморфов в кино, начиная с 1979 по 2019 годы.`;
 
+const variants = {
+    initial: {
+        opacity: 0,
+    },
+    animate: {
+        y: 0,
+        opacity: 1,
+    },
+    exit: {
+        opacity: 0,
+    },
+};
+
 const App = () => {
+    const [icons, setIcons] = useState(["red", "green", "blue"]);
+
     return (
-        <motion.div style={{ marginTop: "50px" }}>
+        <motion.div style={{ marginTop: "50px" }} className="container">
             <motion.img alt="" src={logo} className="logo" whileHover={{ scale: 1.1 }} animate={{ rotate: 360 }} />
-            <MText text={headerText} style={{ marginBottom: "20px" }} />
-            <div className="container">
-                <Filter data={data} />
-                <MText text={footerText} />
-            </div>
+            <MText text={headerText} style={{ marginTop: "20px" }} />
+
+            <Reorder.Group
+                as="ul"
+                axis="x"
+                values={icons}
+                onReorder={setIcons}
+                style={{ display: "flex", flexDirection: "row", flexWrap: "wrap", justifyContent: "center", margin: "20px" }}
+            >
+                {icons.map((icon, index) => (
+                    <Reorder.Item as="li" value={icon} key={index + 1} whileDrag={{ scale: 1.3 }} {...variants}>
+                        <Icon color={icon} />
+                    </Reorder.Item>
+                ))}
+            </Reorder.Group>
+
+            <Filter data={data} />
+            <MText text={footerText} />
         </motion.div>
     );
 };

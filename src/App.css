@@ -71,3 +71,8 @@ ul li {
 .container {
     max-width: 1200px;
 }
+
+svg.icon {
+    cursor: pointer;
+    width: 100px;
+}
