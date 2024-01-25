@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
 
 type Props = {
-    text: number;
-    handleFilter: (selector: number) => void;
+    text: string;
+    handleFilter: (selector: string) => void;
     isSelected: boolean;
 };
 

@@ -1,25 +1,32 @@
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import Button from "./Button";
 import Collapsible from "./Collapsible";
 
 interface Props {
     description: string;
     image: string;
-    year: number;
+    year: string;
 }
 
 const Filter: React.FC<{ data: Props[] }> = ({ data }): JSX.Element => {
-    const [aliens, setAliens] = useState(data.filter((el) => el.year === 1979));
-    const [active, setActive] = useState(aliens[0].year);
+    const [aliens, setAliens] = useState(data);
+    const [active, setActive] = useState("все");
 
-    const buttons = data.reduce((acc: number[], el: Props) => {
-        if (acc.includes(el.year)) return acc;
-        return [...acc, el.year];
-    }, []);
+    const buttons = data.reduce(
+        (acc: string[], el: Props) => {
+            if (acc.includes(el.year)) return acc;
+            return [...acc, el.year];
+        },
+        ["все"]
+    );
 
-    const handleFilter = (selector: number): void => {
-        setAliens(data.filter((el) => el.year === selector));
+    const handleFilter = (selector: string): void => {
+        if (selector === "все") {
+            setAliens(data);
+        } else {
+            setAliens(data.filter((el) => el.year === selector));
+        }
         setActive(selector);
     };
 
@@ -40,34 +47,33 @@ const Filter: React.FC<{ data: Props[] }> = ({ data }): JSX.Element => {
                 transition={{ delay: 0.5 }}
                 style={{ display: "flex", flexDirection: "row", justifyContent: "center", flexWrap: "wrap", gap: "10px" }}
             >
-                {buttons.map((button: number) => (
+                {buttons.map((button: string) => (
                     <Button key={button} text={button} handleFilter={handleFilter} isSelected={active === button}></Button>
                 ))}
             </motion.div>
-            <AnimatePresence>
-                <motion.ul style={{ marginTop: 20 }}>
-                    {aliens &&
-                        aliens.map((alien) => {
-                            return (
-                                <motion.li variants={listVariants} initial="hidden" whileInView={"visible"} key={alien.description}>
-                                    <figure>
-                                        <motion.img
-                                            className="image"
-                                            src={alien.image}
-                                            alt={alien.description}
-                                            whileTap={{
-                                                scale: 1.3,
-                                                outline: "2px solid blue",
-                                            }}
-                                        />
-                                        <Collapsible />
-                                        <figcaption>{alien.description}</figcaption>
-                                    </figure>
-                                </motion.li>
-                            );
-                        })}
-                </motion.ul>
-            </AnimatePresence>
+
+            <motion.ul style={{ marginTop: 20 }}>
+                {aliens &&
+                    aliens.map((alien) => {
+                        return (
+                            <motion.li variants={listVariants} initial="hidden" whileInView={"visible"} viewport={{ once: true }} key={alien.description}>
+                                <figure>
+                                    <motion.img
+                                        className="image"
+                                        src={alien.image}
+                                        alt={alien.description}
+                                        whileTap={{
+                                            scale: 1.3,
+                                            outline: "2px solid blue",
+                                        }}
+                                    />
+                                    <Collapsible />
+                                    <figcaption>{alien.description}</figcaption>
+                                </figure>
+                            </motion.li>
+                        );
+                    })}
+            </motion.ul>
         </>
     );
 };

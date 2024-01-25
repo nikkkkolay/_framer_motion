@@ -7,52 +7,52 @@ const data = [
     {
         description: '"Чужой". Трутень, рост - 2,57 м.',
         image: "/src/images/1979.webp",
-        year: 1979,
+        year: "1979",
     },
     {
         description: '"Чужие". Солдат, рост - 2,18 м.',
         image: "/src/images/1986.webp",
-        year: 1986,
+        year: "1986",
     },
     {
         description: '"Чужие". Королева, рост - 4,33 м.',
         image: "/src/images/1986_2.webp",
-        year: 1986,
+        year: "1986",
     },
     {
         description: '"Чужой" 3. Бегун, рост - 1,95 м.',
         image: "/src/images/1992.webp",
-        year: 1992,
+        year: "1992",
     },
     {
         description: "«Чужой: Воскрешение». Новорождённый, рост - 2,41 м.",
         image: "/src/images/1997.webp",
-        year: 1997,
+        year: "1997",
     },
     {
         description: '"Чужой против Хищника" . Сеточный, рост 2,18 м.',
         image: "/src/images/2004.webp",
-        year: 2004,
+        year: "2004",
     },
     {
         description: '"Чужие против Хищника: Реквием". Чужехищник, рост - 3 м.',
         image: "/src/images/2007.webp",
-        year: 2007,
+        year: "2007",
     },
     {
         description: '"Прометей". Диакон 1,04 м.',
         image: "/src/images/2012.webp",
-        year: 2012,
+        year: "2012",
     },
     {
         description: "«Чужой: Завет». Неоморф, рост - 2,43 м.",
         image: "/src/images/2017.webp",
-        year: 2017,
+        year: "2017",
     },
     {
         description: "«Чужой: Завет». Протоморф, рост 2,57 м.",
         image: "/src/images/2017_2.webp",
-        year: 2017,
+        year: "2017",
     },
 ];
 
@@ -64,7 +64,7 @@ const textAnimation = {
     visible: (custom: number) => ({
         y: 0,
         opacity: 1,
-        transition: { delay: custom * 0.2 },
+        transition: { delay: custom * 0.1 },
     }),
 };
 
