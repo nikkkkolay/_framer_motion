@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
+
 import Filter from "./components/Filter";
+import MText from "./components/MText";
 import logo from "./newsimg117208.webp";
 import "./App.css";
 
@@ -56,40 +58,20 @@ const data = [
     },
 ];
 
-const textAnimation = {
-    hidden: {
-        y: -10,
-        opacity: 0,
-    },
-    visible: (custom: number) => ({
-        y: 0,
-        opacity: 1,
-        transition: { delay: custom * 0.1 },
-    }),
-};
+const headerText = `Появилась возможность увидеть Рипли рядом с каждым из представителей инопланетной расы. В верхнем левом углу рост, вес и название ксеноморфа, а справа год
+выпуска фильма. Приятного просмотра.`;
 
-const text = `Вот такой интересный ликбез получился. Надеюсь было познавательно. Подписка и лайк приветствуются. Этот классный контент был обнаружен на ютуб-канале
+const footerText = `Вот такой интересный ликбез получился. Надеюсь было познавательно. Подписка и лайк приветствуются. Этот классный контент был обнаружен на ютуб-канале
 "FilmCore". Короткий ролик показывает всю эволюцию ксеноморфов в кино, начиная с 1979 по 2019 годы.`;
 
 const App = () => {
     return (
         <motion.div style={{ marginTop: "50px" }}>
             <motion.img alt="" src={logo} className="logo" whileHover={{ scale: 1.1 }} animate={{ rotate: 360 }} />
-
+            <MText text={headerText} style={{ marginBottom: "20px" }} />
             <div className="container">
-                <motion.p initial={{ opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ delay: 0.5 }}>
-                    Появилась возможность увидеть Рипли рядом с каждым из представителей инопланетной расы. В верхнем левом углу рост, вес и название ксеноморфа, а справа год
-                    выпуска фильма. Приятного просмотра.
-                </motion.p>
                 <Filter data={data} />
-                <motion.section initial="hidden" animate="visible">
-                    {text &&
-                        text.split(" ").map((p, i) => (
-                            <motion.span key={p + i} custom={i} variants={textAnimation} transition={{ delay: 0.5 }}>
-                                {p + " "}
-                            </motion.span>
-                        ))}
-                </motion.section>
+                <MText text={footerText} />
             </div>
         </motion.div>
     );
