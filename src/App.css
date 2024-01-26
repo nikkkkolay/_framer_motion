@@ -29,12 +29,17 @@ body {
     min-height: 100vh;
 }
 
+header {
+    position: sticky;
+    top: 20px;
+    z-index: 1000;
+    overflow: hidden;
+}
+
 .logo {
-    width: min(50vw, 200px);
-    height: min(50vw, 200px);
+    width: min(50vw, 300px);
     background-color: #3f3d3d;
     overflow: hidden;
-    border-radius: 50%;
     object-fit: cover;
     cursor: pointer;
 }
@@ -69,6 +74,7 @@ ul li {
 }
 
 .container {
+    position: relative;
     max-width: 1200px;
 }
 

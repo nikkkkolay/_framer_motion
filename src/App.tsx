@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { AnimatePresence, motion, Reorder } from "framer-motion";
+import { motion, Reorder, useTransform, useScroll } from "framer-motion";
 
 import Filter from "./components/Filter";
 import MText from "./components/MText";
@@ -82,28 +82,48 @@ const variants = {
 const App = () => {
     const [icons, setIcons] = useState(["red", "green", "blue"]);
 
+    const { scrollY } = useScroll();
+
+    const heightSizes = [270, 56];
+    const imageSize = [300, 100];
+    const offsetY = [0, 300];
+    const backgroundHeader = ["#242424", "#fff", "rgb(36,36,36, 0)"];
+
+    const marginTop = useTransform(scrollY, offsetY, offsetY);
+    const height = useTransform(scrollY, offsetY, heightSizes);
+    const imgWidth = useTransform(scrollY, offsetY, imageSize);
+    const changeColor = useTransform(scrollY, [0, 150, 300], backgroundHeader);
+    const opacity = useTransform(scrollY, [20, 150], [1, 0]);
+
     return (
-        <motion.div style={{ marginTop: "50px" }} className="container">
-            <motion.img alt="" src={logo} className="logo" whileHover={{ scale: 1.1 }} animate={{ rotate: 360 }} />
-            <MText text={headerText} style={{ marginTop: "20px" }} />
+        <div className="container">
+            <motion.header style={{ height: height, backgroundColor: changeColor }}>
+                <motion.img alt="" style={{ maxWidth: imgWidth }} src={logo} className="logo" whileHover={{ scale: 1.1 }} />
+                <motion.div style={{ opacity: opacity }}>
+                    <MText text={headerText} style={{ marginTop: "20px" }} />
+                </motion.div>
+            </motion.header>
 
-            <Reorder.Group
-                as="ul"
-                axis="x"
-                values={icons}
-                onReorder={setIcons}
-                style={{ display: "flex", flexDirection: "row", flexWrap: "wrap", justifyContent: "center", margin: "20px" }}
-            >
-                {icons.map((icon, index) => (
-                    <Reorder.Item as="li" value={icon} key={index + 1} whileDrag={{ scale: 1.3 }} {...variants}>
-                        <Icon color={icon} />
-                    </Reorder.Item>
-                ))}
-            </Reorder.Group>
+            <motion.main style={{ marginTop: marginTop }}>
+                <Filter data={data} />
 
-            <Filter data={data} />
-            <MText text={footerText} />
-        </motion.div>
+                <Reorder.Group
+                    as="ul"
+                    axis="x"
+                    values={icons}
+                    onReorder={setIcons}
+                    style={{ display: "flex", flexDirection: "row", flexWrap: "wrap", justifyContent: "center", margin: "20px" }}
+                >
+                    {icons.map((icon, index) => (
+                        <Reorder.Item as="li" value={icon} key={index + 1} whileDrag={{ scale: 1.3 }} {...variants}>
+                            <Icon color={icon} />
+                        </Reorder.Item>
+                    ))}
+                </Reorder.Group>
+
+                <MText text={footerText} />
+            </motion.main>
+        </div>
     );
 };
 

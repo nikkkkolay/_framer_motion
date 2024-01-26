@@ -17,14 +17,14 @@ type Props = { text: string; style?: React.CSSProperties };
 
 const MText = ({ text, ...props }: Props) => {
     return (
-        <motion.section {...props} initial="hidden" animate="visible">
+        <motion.div {...props} initial="hidden" animate="visible">
             {text &&
                 text.split(" ").map((p, i) => (
                     <motion.span key={p + i} custom={i} variants={textAnimation} transition={{ delay: 0.5 }}>
                         {p + " "}
                     </motion.span>
                 ))}
-        </motion.section>
+        </motion.div>
     );
 };
 
