@@ -8,5 +8,6 @@
 - липкое меню и уменьшение лого при помощи хуков useScroll иuseTransform
 - анимация сортировки списка 
 - анимация меню при выборе сортировки
+- drag and drop
 
 gh-pages: https://nikkkkolay.github.io/t_framer_motion/
