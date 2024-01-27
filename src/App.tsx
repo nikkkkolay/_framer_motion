@@ -3,59 +3,71 @@ import { motion, Reorder, useTransform, useScroll } from "framer-motion";
 
 import Filter from "./components/Filter";
 import MText from "./components/MText";
-import logo from "./newsimg117208.webp";
-import "./App.css";
 import Icon from "./components/Icon";
+
+import logo from "./logo.webp";
+import  img1979  from "./images/1979.webp";
+import  img1986  from "./images/1986.webp";
+import  img1986_2  from "./images/1986_2.webp";
+import  img1992  from "./images/1992.webp";
+import  img1997  from "./images/1997.webp";
+import  img2004  from "./images/2004.webp";
+import  img2007  from "./images/2007.webp";
+import  img2012  from "./images/2012.webp";
+import  img2017  from "./images/2017.webp";
+import  img2017_2  from "./images/2017_2.webp";
+
+import "./App.css";
 
 const data = [
     {
         description: '"Чужой". Трутень, рост - 2,57 м.',
-        image: "/src/images/1979.webp",
+        image: img1979,
         year: "1979",
     },
     {
         description: '"Чужие". Солдат, рост - 2,18 м.',
-        image: "/src/images/1986.webp",
+        image: img1986,
         year: "1986",
     },
     {
         description: '"Чужие". Королева, рост - 4,33 м.',
-        image: "/src/images/1986_2.webp",
+        image: img1986_2,
         year: "1986",
     },
     {
         description: '"Чужой" 3. Бегун, рост - 1,95 м.',
-        image: "/src/images/1992.webp",
+        image: img1992,
         year: "1992",
     },
     {
         description: "«Чужой: Воскрешение». Новорождённый, рост - 2,41 м.",
-        image: "/src/images/1997.webp",
+        image: img1997,
         year: "1997",
     },
     {
         description: '"Чужой против Хищника" . Сеточный, рост 2,18 м.',
-        image: "/src/images/2004.webp",
+        image: img2004,
         year: "2004",
     },
     {
         description: '"Чужие против Хищника: Реквием". Чужехищник, рост - 3 м.',
-        image: "/src/images/2007.webp",
+        image: img2007,
         year: "2007",
     },
     {
         description: '"Прометей". Диакон 1,04 м.',
-        image: "/src/images/2012.webp",
+        image: img2012,
         year: "2012",
     },
     {
         description: "«Чужой: Завет». Неоморф, рост - 2,43 м.",
-        image: "/src/images/2017.webp",
+        image: img2017,
         year: "2017",
     },
     {
         description: "«Чужой: Завет». Протоморф, рост 2,57 м.",
-        image: "/src/images/2017_2.webp",
+        image: img2017_2,
         year: "2017",
     },
 ];
